@@ -13,6 +13,7 @@ public class CakeView extends SurfaceView {
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
     Paint candlePaint = new Paint();
+    Paint candlePaint2 = new Paint();
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
@@ -33,6 +34,7 @@ public class CakeView extends SurfaceView {
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
+
 
 
 
@@ -120,7 +122,11 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
 
         //Now a candle in the center
-        drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+        //drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+
+        //Draw 2 Candles, equidistant
+        drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/2, cakeTop);
+        drawCandle(canvas, cakeLeft + 2*cakeWidth/3 - candleWidth/2, cakeTop);
 
     }//onDraw
 

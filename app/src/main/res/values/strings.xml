@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BirthdayCake</string>
+    <string name="blowOut">Extinguish</string>
+    <string name="goodbye">GOODBYE</string>
+    <string name="candles">Candles</string>
+    <string name="frosting">Frosting</string>
+    <string name="happyBirthday">Happy Birthday!</string>
+    <string name="howMany">How Many Candles?</string>
 </resources>

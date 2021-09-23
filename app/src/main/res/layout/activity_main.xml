@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,25 +14,29 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Happy Birthday!"
+            android:text="@string/happyBirthday"
+            android:textAlignment="center"
             android:textColor="#FF5722"
-            android:textSize="34sp" />
+            android:textSize="48sp" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
 
         <!--        CakeView is a custom SurfaceView that is defined in the app's source code -->
+
         <cs301.birthdaycake.CakeView
             android:id="@+id/cakeview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -39,24 +44,152 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
+            android:id="@+id/seekBarHolder"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HOORAY!!" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Switch
-            android:id="@+id/frosting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="Frosting" />
+            <TextView
+                android:id="@+id/howManyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/howMany" />
 
-        <Button
-            android:id="@+id/button2"
+            <SeekBar
+                android:id="@+id/howManySeek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="2"
+                android:max="5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/switchHolder"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="yay..." />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/frostingSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="@string/frosting"
+                android:checked="true"/>
+
+            <Switch
+                android:id="@+id/candlesSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/candles"
+                android:checked="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/blowOutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/blowOut"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/goodbyeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="goodbye"
+                android:text="@string/goodbye" />
+        </LinearLayout>
 
     </LinearLayout>
+
+    <!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/seekBarHolder"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/howManyCandles"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/howMany" />-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekBar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/switchHolder"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <Switch-->
+<!--                android:id="@+id/frosting"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minHeight="48dp"-->
+<!--                android:text="@string/frosting" />-->
+
+<!--            <Switch-->
+<!--                android:id="@+id/candles"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:minHeight="48dp"-->
+<!--                android:text="@string/candles" />-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/buttonHolder"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/blowOutButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/blowOut" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/goodbyeButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/goodbye" />-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
 </LinearLayout>

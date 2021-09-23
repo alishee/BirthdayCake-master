@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 public class CakeView extends SurfaceView {
@@ -95,6 +96,22 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
         }
     }
+
+
+    public boolean onTouchEvent(MotionEvent event)
+    {
+        int x = (int)event.getX();
+        int y = (int)event.getY();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+            case MotionEvent.ACTION_UP:
+        }
+
+        return false;
+    }
+
 
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is

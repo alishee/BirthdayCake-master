@@ -17,6 +17,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint textPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -36,6 +37,8 @@ public class CakeView extends SurfaceView {
     public static final float innerFlameRadius = 15.0f;
 
     private CakeModel cakeModel = new CakeModel();
+    public int x = -1;
+    public int y = -1;
 
     /**
      * ctor must be overridden here as per standard Java inheritance practice.  We need it
@@ -62,6 +65,9 @@ public class CakeView extends SurfaceView {
         outerFlamePaint.setStyle(Paint.Style.FILL);
         innerFlamePaint.setColor(0xFFFFA500);  //orange
         innerFlamePaint.setStyle(Paint.Style.FILL);
+
+        textPaint.setColor(Color.RED);
+        textPaint.setTextSize(48);
 
 
         setBackgroundColor(Color.WHITE);  //better than black default
@@ -100,15 +106,15 @@ public class CakeView extends SurfaceView {
 
     public boolean onTouchEvent(MotionEvent event)
     {
-        int x = (int)event.getX();
-        int y = (int)event.getY();
+        x = (int)event.getX();
+        y = (int)event.getY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_UP:
         }
-
+        invalidate();
         return false;
     }
 
@@ -151,6 +157,10 @@ public class CakeView extends SurfaceView {
             float location = cakeLeft + (i * cakeWidth) / (cakeModel.numCandles + 1);
             location = location - candleWidth/ cakeModel.numCandles;
             drawCandle(canvas, location, cakeTop);
+        }
+        if(x != -1) {
+            String loc = "x: " + x + "   y: " + y;
+            canvas.drawText(loc, 1500f, 100f, textPaint);
         }
 //        //Draw 2 Candles, equidistant
 //        drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/2, cakeTop);

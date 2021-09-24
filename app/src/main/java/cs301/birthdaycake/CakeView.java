@@ -10,6 +10,8 @@ import android.view.SurfaceView;
 
 public class CakeView extends SurfaceView {
 
+
+
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
     Paint frostingPaint = new Paint();
@@ -17,6 +19,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint balloon = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -152,6 +155,10 @@ public class CakeView extends SurfaceView {
             location = location - candleWidth/ cakeModel.numCandles;
             drawCandle(canvas, location, cakeTop);
         }
+
+        canvas.drawOval(x,y, 50,60,balloon);
+        canvas.drawRect(x,y,)
+
 //        //Draw 2 Candles, equidistant
 //        drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/2, cakeTop);
 //        drawCandle(canvas, cakeLeft + 2*cakeWidth/3 - candleWidth/2, cakeTop);
